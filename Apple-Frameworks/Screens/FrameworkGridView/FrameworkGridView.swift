@@ -11,21 +11,31 @@ struct FrameworkGridView: View {
     @StateObject var viewModel = FramworkGridViewModel()
     var body: some View {
         NavigationView{
-            ScrollView(content: {
-                LazyVGrid(columns: viewModel.columns, content: {
-                    ForEach(MockData.frameworks, content:
-                                { framework in FrameworkTitle(framework: framework)
-                            .onTapGesture {
-                                viewModel.selectedFrameWork = framework
-                            }
-                    })
+            //            ScrollView(content: {
+            //                LazyVGrid(columns: viewModel.columns, content: {
+            //                    ForEach(MockData.frameworks, content:
+            //                                { framework in FrameworkTitle(framework: framework)
+            //                            .onTapGesture {
+            //                                viewModel.selectedFrameWork = framework
+            //                            }
+            //                    })
+            //                })
+            //            })
+            List{
+                ForEach(MockData.frameworks, content:
+                            { framework in
+                    NavigationLink(destination: FrameworkDetailView(framework: framework, isShowingDetailView: $viewModel.isShowingDetailView)){
+                        FrameworkTitle(framework: framework)
+                    }
+                
                 })
-            })
+            }
             .navigationTitle("🍎 Frameworks")
-            .sheet(isPresented: $viewModel.isShowingDetailView, content: {
-                FrameworkDetailView(framework: viewModel.selectedFrameWork ?? MockData.errorFrameWork, isShowingDetailView: $viewModel.isShowingDetailView)
-            })
+//            .sheet(isPresented: $viewModel.isShowingDetailView, content: {
+//                FrameworkDetailView(framework: viewModel.selectedFrameWork ?? MockData.errorFrameWork, isShowingDetailView: $viewModel.isShowingDetailView)
+//            })
         }
+        .accentColor(Color(.label))
     }
 }
 
