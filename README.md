@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-  <a href="https://github.com/vishnu32510/Photos_using_unsplash_api">
+  <a href="https://github.com/vishnu32510/Apple-Frameworks">
     <img src="Apple-Frameworks/Assets.xcassets/app-clip.imageset/app-clip.png" alt="Logo" width="80" height="80">
   </a>
 
